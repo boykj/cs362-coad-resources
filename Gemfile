@@ -6,7 +6,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
-gem 'guard', '~> 2.16', '>= 2.16.2'
 gem 'haml'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
@@ -32,9 +31,13 @@ group :development, :test do
 end
 
 group :development do
+  gem 'ffi', '~> 1.12', '>= 1.12.2'
+  gem 'rb-inotify', '~> 0.10.1'
+  gem 'rb-fsevent', '~> 0.10.3'
+  gem 'guard', '~> 2.16', '>= 2.16.2'
   gem 'guard-rspec', require: false
   gem 'letter_opener'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.2', '>= 3.2.1'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
