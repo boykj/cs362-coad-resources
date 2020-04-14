@@ -10,6 +10,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'listen', '~> 3.2', '>= 3.2.1', group: :production
 gem 'pagy'
 gem 'phony_rails'
 gem 'puma', '~> 3.12'
