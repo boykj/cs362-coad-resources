@@ -32,7 +32,6 @@ end
 
 group :development do
   gem 'ffi', '~> 1.12', '>= 1.12.2'
-  gem 'rb-inotify', '~> 0.10.1'
   gem 'rb-fsevent', '~> 0.10.3'
   gem 'guard', '~> 2.16', '>= 2.16.2'
   gem 'guard-rspec', require: false
