@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
-	
+
   it {should belong_to(:organization)}
   it {should belong_to(:region)}
 	it {should belong_to(:resource_category)}
@@ -9,6 +9,7 @@ RSpec.describe Ticket, type: :model do
 	it "has a phone" do
 		ticket = Ticket.new
 		expect(ticket).to respond_to(:phone)
+		expect(ticket.phone_was) == true
 	end
 
 	it "has a name" do
