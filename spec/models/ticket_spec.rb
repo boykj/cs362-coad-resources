@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
+	
   it {should belong_to(:organization)}
   it {should belong_to(:region)}
 	it {should belong_to(:resource_category)}
@@ -18,5 +19,10 @@ RSpec.describe Ticket, type: :model do
 	it "has a region_id" do
 		ticket = Ticket.new
 		expect(ticket).to respond_to(:region_id)
+	end
+
+	it "has a resource_category_id" do
+		ticket = Ticket.new
+		expect(ticket).to respond_to(:resource_category_id)
 	end
 end
