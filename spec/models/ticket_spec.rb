@@ -14,4 +14,9 @@ RSpec.describe Ticket, type: :model do
 		ticket = Ticket.new
 		expect(ticket).to respond_to(:name)
 	end
+
+	it "has a region_id" do
+		ticket = Ticket.new
+		expect(ticket).to respond_to(:region_id)
+	end
 end
