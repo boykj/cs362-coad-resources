@@ -3,9 +3,15 @@ require 'rails_helper'
 RSpec.describe Ticket, type: :model do
 	let (:ticket) {Ticket.new}
 
+	describe "relationships" do 
+		it "should belong to region" do
+			expect(ticket).to belong_to(:region)
+		end
+		it "should belong to resource_category" do
+			expect(ticket).to belong_to(:resource_category)
+		end
+	end
   it {should belong_to(:organization)}
-  it {should belong_to(:region)}
-	it {should belong_to(:resource_category)}
 	
 	it "has a phone, name, region_Id, resource_category_id" do
 		ticket = Ticket.new
