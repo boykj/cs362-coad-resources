@@ -10,6 +10,9 @@ RSpec.describe Organization, type: :model do
 		it "has many tickets" do
 			expect(org).to have_many(:tickets)
 		end
+		it "has and belongs to many resource categories" do
+			expect(org).to have_and_belong_to_many(:resource_categories)
+		end
 	end
 	
 	describe "properties" do
