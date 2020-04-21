@@ -10,15 +10,24 @@ RSpec.describe Ticket, type: :model do
 		it "should belong to resource_category" do
 			expect(ticket).to belong_to(:resource_category)
 		end
+		it "should belong to organization" do
+			expect(ticket).to belong_to(:organization)
+		end
 	end
-  it {should belong_to(:organization)}
 	
-	it "has a phone, name, region_Id, resource_category_id" do
-		ticket = Ticket.new
-		expect(ticket).to respond_to(:phone)
-		expect(ticket.phone_was) == true
-		expect(ticket).to respond_to(:name)
-		expect(ticket).to respond_to(:region_id)
-		expect(ticket).to respond_to(:resource_category_id)
+	describe "properties" do
+		it "has a phone" do
+			expect(ticket).to respond_to(:phone)
+		end
+		it "has a name" do
+			expect(ticket).to respond_to(:phone)
+		end
+		it "has a region_id" do
+			expect(ticket).to respond_to(:region_id)
+		end
+		it "has a resource_category_id" do
+			expect(ticket).to respond_to(:resource_category_id)
+		end
 	end
+	
 end
