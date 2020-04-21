@@ -25,7 +25,15 @@ RSpec.describe Region, type: :model do
 	end
 
 	#methods
-	decsribe "::unspecified" do
+	describe "#to_s" do
+		it "has a string that is the name" do
+			expected_name = 'FAKE'
+			region_s = Region.new(name: expected_name)
+			expect(region_s.to_s).to eq(expected_name)
+		end
+	end
+
+	describe "::unspecified" do
 		#Pending test TODO
 	end
 	
