@@ -16,13 +16,6 @@ RSpec.describe Region, type: :model do
 	end
 
 	#validations
-	describe "#to_s" do
-		it "has a string that is the name" do
-			expected_name = 'FAKE'
-			region_s = Region.new(name: expected_name)
-			expect(region_s.to_s).to eq(expected_name)
-		end
-	end
 
 	#methods
 	describe "#to_s" do
