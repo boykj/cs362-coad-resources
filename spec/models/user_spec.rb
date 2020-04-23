@@ -4,8 +4,6 @@ RSpec.describe User, type: :model do
 	let(:user) { User.new(email: 'fakeyboi@googledatacollection.com') }
 	let(:user1) { User.new }
 
-	#it {should belong_to(:organization)
-
 	describe "properties" do
 		it "has an email" do
 			expect(user).to respond_to(:email)
@@ -49,5 +47,16 @@ RSpec.describe User, type: :model do
 		end
 	end
 
+	describe "methods" do
+		
+		it "sets default role" do
+			# TODO
+		end
+
+		it "has a string representation" do
+			# TODO
+		end
+
+	end
 	
 end
