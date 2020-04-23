@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
-	let (:org) {Organization.new(name: 'FAKE')}
+	let (:org) { Organization.new(name: 'FAKE', email: 'dataCollection@gmail.com') }
 
 	describe "relationships" do
 		it "has many users" do
@@ -44,6 +44,22 @@ RSpec.describe Organization, type: :model do
 			expected_name = 'FAKE'
 			expect(org.to_s).to eq(expected_name)
 		end
+	end
+
+	describe "validations" do
+		it "validates name" do
+			expect(org).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+		end
+
+		it "validates email" do 
+			expect(org).to validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create)
+		end
+
+		it "validates description" do
+			expect(org).to validate_length_of(:description).is_at_most(1020).on(:create)
+		end
+
+
 	end
 		
 end
