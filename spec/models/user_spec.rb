@@ -14,13 +14,6 @@ RSpec.describe User, type: :model do
 		specify {expect(user).to belong_to(:organization)}
 	end
 
-	describe "#to_s" do
-		it "has a string that is the email" do
-			expected_email = 'fakeyboi@googledatacollection.com'
-			expect(user.to_s).to eq(expected_email)
-		end
-	end
-
 	describe "vaidations" do
 		it "has an email" do
 			expect(user).to validate_presence_of(:email)
@@ -53,10 +46,10 @@ RSpec.describe User, type: :model do
 			# TODO
 		end
 
-		it "has a string representation" do
-			# TODO
+		it "has a string that is the email" do
+			expected_email = 'fakeyboi@googledatacollection.com'
+			expect(user.to_s).to eq(expected_email)
 		end
-
 	end
 	
 end
