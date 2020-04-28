@@ -46,5 +46,12 @@ RSpec.describe ResourceCategory, type: :model do
 		end
 	end
 
+	describe "::unspecified" do
+		it "creates a new unspecified resource category" do
+			expect(ResourceCategory.where(name: 'Unspecified')).to be_empty
+			expect{ResourceCategory.unspecified}.to change{ResourceCategory.count}.by(1)
+		end
+	end
+
 
 end
