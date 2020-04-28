@@ -47,19 +47,35 @@ RSpec.describe Organization, type: :model do
 	end
 
 	describe "validations" do
-		it "validates name" do
+		it "validates length name" do
 			expect(org).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
 		end
 
-		it "validates email" do 
+		it "validates uniquness of name" do
+			expect(org).to validate_uniqueness_of(:name).case_insensitive
+		end
+
+		it "validates length of email" do 
 			expect(org).to validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create)
+		end
+
+		it "validates uniqueness of email" do
+			expect(org).to validate_uniqueness_of(:email).case_insensitive
 		end
 
 		it "validates description" do
 			expect(org).to validate_length_of(:description).is_at_most(1020).on(:create)
 		end
+	end
 
+	describe "methods" do
+		it "has an approve method" do
+			expect(org.approve).to eq(:approved)
+		end
 
+		it "has a reject method" do
+			expect(org.reject).to eq(:rejected)
+		end
 	end
 		
 end
