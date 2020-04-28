@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
-	let(:resource_category) {ResourceCategory.new}
+	let(:resource_category) {ResourceCategory.new(name: 'FAKE')}
 
 	it "has a name" do
 		expect(resource_category).to respond_to(:name)
@@ -25,5 +25,26 @@ RSpec.describe ResourceCategory, type: :model do
 			expect(resource_category).to validate_uniqueness_of(:name).case_insensitive
 		end
 	end
+
+	describe "methods" do
+		it "has a string that is the name" do
+			expected_name = 'FAKE'
+			expect(resource_category.to_s).to eq(expected_name)
+		end
+
+		it "has an activate method" do
+			expect(resource_category.activate).to be_truthy
+		end
+
+		it "has a deactivate method" do
+			expect(resource_category.deactivate).to be_truthy
+		end
+
+		it "has an inactive method" do
+			#active_resource_category = ResourceCategory.new(active:true)
+			expect(resource_category.inactive?).to be_falsey
+		end
+	end
+
 
 end
