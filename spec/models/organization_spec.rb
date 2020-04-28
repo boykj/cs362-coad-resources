@@ -39,15 +39,8 @@ RSpec.describe Organization, type: :model do
 		end
 	end
 
-	describe "#to_s" do
-		it "has a string representation that is a name" do
-			expected_name = 'FAKE'
-			expect(org.to_s).to eq(expected_name)
-		end
-	end
-
 	describe "validations" do
-		it "validates length name" do
+		it "validates length of name" do
 			expect(org).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
 		end
 
@@ -63,7 +56,7 @@ RSpec.describe Organization, type: :model do
 			expect(org).to validate_uniqueness_of(:email).case_insensitive
 		end
 
-		it "validates description" do
+		it "validates length of description" do
 			expect(org).to validate_length_of(:description).is_at_most(1020).on(:create)
 		end
 	end
@@ -75,6 +68,11 @@ RSpec.describe Organization, type: :model do
 
 		it "has a reject method" do
 			expect(org.reject).to eq(:rejected)
+		end
+
+		it "has a string representation that is a name" do
+			expected_name = 'FAKE'
+			expect(org.to_s).to eq(expected_name)
 		end
 	end
 		
