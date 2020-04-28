@@ -16,6 +16,15 @@ RSpec.describe Region, type: :model do
 	end
 
 	#validations
+	describe "validations" do
+		it "validates length of name on create" do
+			expect(region).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+		end
+
+		it "validates uniqueness of name, not case sensitive" do
+			expect(region).to validate_uniqueness_of(:name).case_insensitive
+		end
+	end
 
 	#methods
 	describe "#to_s" do
