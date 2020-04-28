@@ -26,7 +26,10 @@ RSpec.describe Region, type: :model do
 	end
 
 	describe "::unspecified" do
-		#Pending test TODO
+		it "creates a new unspecified resource category" do
+			expect(Region.where(name: 'Unspecified')).to be_empty
+			expect{Region.unspecified}.to change{Region.count}.by(1)
+		end
 	end
 	
 end
