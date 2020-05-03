@@ -1,16 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-	let(:user) {User.new}
-	let(:user1) {User.new}
+	let(:user) { FactoryBot.build(:user) }
 
-	#it {should belong_to(:organization)
+	it {should belong_to(:organization) }
 
-	it "has an email" do
-		expect(user).to respond_to(:email)
-	end
-	it "has a password" do
-		expect(user).to respond_to(:password)
+	describe "relationships" do
+		it "has an email" do
+			expect(user).to respond_to(:email)
+		end
+		it "has a password" do
+			expect(user).to respond_to(:password)
+		end
 	end
 
 end

@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Region, type: :model do
 	#let(:region) {Region.new(name: 'FAKE')}
+<<<<<<< HEAD
 	let(:region) { FactoryBot.build(:region)}
+=======
+	let(:region) { FactoryBot.build(:region) }
+>>>>>>> 07_factory_refactors
 
 	#properties
 	it "region has name" do
@@ -30,7 +34,11 @@ RSpec.describe Region, type: :model do
 	#methods
 	describe "#to_s" do
 		it "has a string that is the name" do
+<<<<<<< HEAD
 			expected_name = 'Fake'
+=======
+			expected_name = 'Default'
+>>>>>>> 07_factory_refactors
 			expect(region.to_s).to eq(expected_name)
 		end
 	end
