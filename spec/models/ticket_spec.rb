@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
-	let (:ticket) {Ticket.new}
+	#let (:ticket) {Ticket.new}
+	let(:ticket) { FactoryBot.build(:ticket) }
 
 	describe "relationships" do 
 		it "should belong to region" do

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Region, type: :model do
 	#let(:region) {Region.new(name: 'FAKE')}
-	let(:region) { FactoryBot.build(:region)}
+	let(:region) { FactoryBot.build(:region) }
 
 	#properties
 	it "region has name" do
