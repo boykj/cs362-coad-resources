@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
-	let(:resource_category) {ResourceCategory.new(name: 'FAKE')}
-
+	#let(:resource_category) {ResourceCategory.new(name: 'FAKE')}
+	let(:resource_category) { FactoryBot.build(:resource_category)}
 	it "has a name" do
 		expect(resource_category).to respond_to(:name)
 	end	
@@ -28,7 +28,7 @@ RSpec.describe ResourceCategory, type: :model do
 
 	describe "methods" do
 		it "has a string that is the name" do
-			expected_name = 'FAKE'
+			expected_name = 'Default'
 			expect(resource_category.to_s).to eq(expected_name)
 		end
 
