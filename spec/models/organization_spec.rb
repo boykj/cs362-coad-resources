@@ -59,6 +59,10 @@ RSpec.describe Organization, type: :model do
 		it "validates length of description" do
 			expect(org).to validate_length_of(:description).is_at_most(1020).on(:create)
 		end
+
+		#it "validates email format" do
+			#expect(org).to allow_value(VALID_EMAIL_REGEX).for(:email)
+		#end
 	end
 
 	describe "methods" do
@@ -73,6 +77,10 @@ RSpec.describe Organization, type: :model do
 		it "has a string representation that is a name" do
 			expected_name = 'FAKE'
 			expect(org.to_s).to eq(expected_name)
+		end
+
+		it "has a set_default_status" do
+			#TODO
 		end
 	end
 		
