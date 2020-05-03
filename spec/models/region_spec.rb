@@ -30,7 +30,7 @@ RSpec.describe Region, type: :model do
 	#methods
 	describe "#to_s" do
 		it "has a string that is the name" do
-			expected_name = 'Fake'
+			expected_name = 'Default'
 			expect(region.to_s).to eq(expected_name)
 		end
 	end
