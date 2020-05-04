@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
-	let (:org) { Organization.new(name: 'FAKE', email: 'dataCollection@gmail.com') }
+	let(:org) { FactoryBot.build(:organization) }
+	let(:fake_org) {FactoryBot.build(:organization) }
 
 	describe "relationships" do
 		it "has many users" do
@@ -60,9 +61,18 @@ RSpec.describe Organization, type: :model do
 			expect(org).to validate_length_of(:description).is_at_most(1020).on(:create)
 		end
 
-		#it "validates email format" do
-			#expect(org).to allow_value(VALID_EMAIL_REGEX).for(:email)
-		#end
+		it "validates authenticity" do
+			expect(fake_org).to_not be_valid
+		end
+
+		describe "validates the email format" do
+			it { should allow_value('email@address.com').for(:email) }
+		end
+
+		describe "identifies an incorrect email" do
+			it { should_not allow_value('Fake').for(:email) }
+		end
+
 	end
 
 	describe "methods" do
@@ -75,12 +85,12 @@ RSpec.describe Organization, type: :model do
 		end
 
 		it "has a string representation that is a name" do
-			expected_name = 'FAKE'
+			expected_name = 'Default'
 			expect(org.to_s).to eq(expected_name)
 		end
 
-		it "has a set_default_status" do
-			#TODO
+		it "should not override default status" do
+			#expect(org.set_default_status).to eq(:submitted)
 		end
 	end
 		

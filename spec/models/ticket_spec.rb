@@ -30,5 +30,19 @@ RSpec.describe Ticket, type: :model do
 			expect(ticket).to respond_to(:resource_category_id)
 		end
 	end
+
+	describe "validations" do
+		it "validates the length of name on create" do
+			expect(ticket).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+		end
+
+		it "validates the length of description" do
+			expect(ticket).to validate_length_of(:description).is_at_most(1020).on(:create)
+		end
+
+		it "validates the authenticity of a phone number" do
+			#expect(ticket).to validate_presence_of(:phone).to be_truthy
+		end
+	end
 	
 end
