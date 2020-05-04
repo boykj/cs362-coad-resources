@@ -44,5 +44,15 @@ RSpec.describe Ticket, type: :model do
 			#expect(ticket).to validate_presence_of(:phone).to be_truthy
 		end
 	end
+
+	describe "scopes" do
+
+	end
 	
+	describe "methods" do
+		it "has a to_s string method" do
+			expected_ticket_value = 1
+			expect(ticket.to_s).to eq("Ticket #{expected_ticket_value}")
+		end
+	end
 end
