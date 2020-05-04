@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	#let (:org) { Organization.new(name: 'FAKE', email: 'dataCollection@gmail.com') }
 	let(:org) { FactoryBot.build(:organization) }
 	let(:fake_org) {FactoryBot.build(:organization) }
 
