@@ -20,10 +20,6 @@ RSpec.describe User, type: :model do
 			expect(user).to validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create)
 		end
 
-		it "validates email format" do
-			#TODO
-		end
-
 		it "validates uniqueness of email" do
 			expect(user).to validate_uniqueness_of(:email).case_insensitive 
 		end
@@ -35,6 +31,14 @@ RSpec.describe User, type: :model do
 		it "validates length of password" do
 			expect(user).to validate_length_of(:password).is_at_least(7).is_at_most(255)
 		end
+	end
+
+	describe "validates the email format" do
+		it { should allow_value('fake@google.com').for(:email) }
+	end
+
+	describe "identifies incorrect email" do
+		it {should_not allow_value('123432randomstring').for(:email) }
 	end
 
 	describe "methods" do
