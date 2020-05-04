@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
-	#let (:ticket) {Ticket.new}
 	let(:ticket) { FactoryBot.build(:ticket) }
 
 	describe "relationships" do 
@@ -18,16 +17,16 @@ RSpec.describe Ticket, type: :model do
 	
 	describe "properties" do
 		it "has a phone" do
-			expect(ticket).to respond_to(:phone)
+			expect(ticket).to validate_presence_of(:phone)
 		end
 		it "has a name" do
-			expect(ticket).to respond_to(:phone)
+			expect(ticket).to validate_presence_of(:phone)
 		end
 		it "has a region_id" do
-			expect(ticket).to respond_to(:region_id)
+			expect(ticket).to validate_presence_of(:region_id)
 		end
 		it "has a resource_category_id" do
-			expect(ticket).to respond_to(:resource_category_id)
+			expect(ticket).to validate_presence_of(:resource_category_id)
 		end
 	end
 
@@ -46,7 +45,7 @@ RSpec.describe Ticket, type: :model do
 	end
 
 	describe "scopes" do
-
+		#TODO
 	end
 	
 	describe "methods" do
@@ -54,5 +53,15 @@ RSpec.describe Ticket, type: :model do
 			expected_ticket_value = 1
 			expect(ticket.to_s).to eq("Ticket #{expected_ticket_value}")
 		end
+
+		it "has a captured? method" do
+			#TODO
+		end
+
+		it "has an open? method" do
+			expect(ticket.open?).to be_truthy
+		end
+
 	end
+
 end
