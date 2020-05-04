@@ -42,7 +42,6 @@ RSpec.describe User, type: :model do
 	end
 
 	describe "methods" do
-		
 		it "sets default role" do
 			# TODO
 		end

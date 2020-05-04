@@ -39,8 +39,11 @@ RSpec.describe Ticket, type: :model do
 			expect(ticket).to validate_length_of(:description).is_at_most(1020).on(:create)
 		end
 
-		it "validates the authenticity of a phone number" do
-			#expect(ticket).to validate_presence_of(:phone).to be_truthy
+		describe "validates the authenticity of a phone number" do
+			#expect(ticket).to validate(:phone).phony_plausible(true)
+		end
+		describe "indentifies an incorect phone number" do
+			#it { should_not allow_value('123-123-123').for(:phone) }
 		end
 	end
 
