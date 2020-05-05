@@ -48,7 +48,10 @@ RSpec.describe Ticket, type: :model do
 	end
 
 	describe "scopes" do
-		#TODO
+		it "retrevies only non closed tickets without an organization" do
+		
+		end
+
 	end
 	
 	describe "methods" do
