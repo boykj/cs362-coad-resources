@@ -6,7 +6,7 @@ RSpec.describe Region, type: :model do
 
 	#properties
 	it "region has name" do
-		expect(region).to respond_to(:name)
+		expect(region).to validate_presence_of(:name)
 	end
 
 	#relationships
