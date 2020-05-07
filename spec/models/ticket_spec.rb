@@ -47,9 +47,28 @@ RSpec.describe Ticket, type: :model do
 		end
 	end
 
+open_tickets = Ticket.where(closed: false, organization: nil)
+
+open_tickets = Ticket.open
+
 	describe "scopes" do
-		it "retrevies only non closed tickets without an organization" do
-		
+
+		describe "open" do
+			#let(:open_ticket) { FactoryBot.build(:ticket, :open) }
+			#let(:closed_ticket) { FactoryBot.build(:ticket, :closed) }
+			#let(:closed_with_org) { FactoryBot.create(:ticket, :closed_with_organization) }
+			#let(:open_with_org) { FactoryBot.create(:ticket, :open_with_organization) }
+			it "retrevies only non closed tickets without an organization" do
+				closed_ticket = Ticket.create(closed: true)
+				open_ticket = Ticket.create(closed: false)
+				closed_with_org = Ticket.create(closed: true, organization: Organization.new())
+				open_with_org = Ticket.create(closed: true, organization: Organization.new())
+
+				open_tickets = Ticket.where(closed: false, organization: nil)				
+
+				#expect(open_tickets).to include(open_ticket)
+				expect(open_tickets).not_to include(closed_ticket, closed_with_org, open_with_org)
+			end
 		end
 
 	end
