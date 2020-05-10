@@ -4,6 +4,7 @@ RSpec.describe Ticket, type: :model do
 	let(:ticket) { FactoryBot.build(:ticket) }
 	let(:region) { FactoryBot.create(:region) } 
 	let(:resource_category) { FactoryBot.create(:resource_category) }
+	let(:organization) { FactoryBot.create(:organization) }
 
 	describe "relationships" do 
 		it "should belong to region" do
@@ -84,7 +85,12 @@ open_tickets = Ticket.open
 		end
 
 		it "has a captured? method" do
-			#TODO
+			expect(ticket.captured?).to be_falsey
+		end
+
+		it "has an opposite captured? method" do
+			ticket.organization = organization
+			expect(ticket.captured?).to be_truthy
 		end
 
 		it "has an open? method" do

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 	let(:org) { FactoryBot.build(:organization) }
-	let(:fake_org) {FactoryBot.build(:organization) }
+	let(:fake_org) {FactoryBot.create(organization) }
 
 	describe "relationships" do
 		it "has many users" do
@@ -62,7 +62,7 @@ RSpec.describe Organization, type: :model do
 		end
 
 		it "validates authenticity" do
-			expect(fake_org).to_not be_valid
+			expect(org).to be_valid
 		end
 
 		describe "validates the email format" do
