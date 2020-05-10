@@ -3,10 +3,10 @@ FactoryBot.define do
   factory :ticket do
     name { 'Default' }
     id { '1' }
-    phone { '123-1234' }
+    phone { '+19 62 123 00 00' }
     #description { 'Default Description' }
-    resource_category_id { 'Resource_1' }
-    region_id { 'Region_1' }
+    #resource_category_id { 'Resource_1' }
+    #region_id { 'Region_1' }
 
     trait :open do
     	closed { false }

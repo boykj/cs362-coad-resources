@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 	let(:ticket) { FactoryBot.build(:ticket) }
+	let(:region) { FactoryBot.create(:region) } 
+	let(:resource_category) { FactoryBot.create(:resource_category) }
 
 	describe "relationships" do 
 		it "should belong to region" do
@@ -39,12 +41,12 @@ RSpec.describe Ticket, type: :model do
 			expect(ticket).to validate_length_of(:description).is_at_most(1020).on(:create)
 		end
 
-		describe "validates the authenticity of a phone number" do
-			#expect(ticket).to validate(:phone).phony_plausible(true)
+		it "validates the authenticity of a phone number" do
+			ticket.region = region
+			ticket.resource_category = resource_category
+			expect(ticket).to be_valid
 		end
-		describe "indentifies an incorect phone number" do
-			#it { should_not allow_value('123-123-123').for(:phone) }
-		end
+
 	end
 
 open_tickets = Ticket.where(closed: false, organization: nil)
