@@ -45,6 +45,8 @@ RSpec.describe Ticket, type: :model do
 			ticket.region = region
 			ticket.resource_category = resource_category
 			expect(ticket).to be_valid
+			ticket.phone = 'INVALID'
+			expect(ticket).to_not be_valid
 		end
 
 	end
