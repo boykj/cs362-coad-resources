@@ -5,8 +5,8 @@ FactoryBot.define do
     id { '1' }
     phone { '+19 62 123 00 00' }
     #description { 'Default Description' }
-    #resource_category_id { 'Resource_1' }
-    #region_id { 'Region_1' }
+    resource_category_id { create(:resource_category).id }
+    region_id { create(:region).id }
 
     trait :open do
     	closed { false }
@@ -16,14 +16,12 @@ FactoryBot.define do
       closed { true }
     end
 
-    trait :open_with_organization do
-      closed { false }
-      organization { Organization.new }
+    trait :with_organization do
+      organization_id { true }
     end
 
-    trait :closed_with_organization do
-      closed { true }
-      organization { Organization.new }
+    trait :without_organization do
+      organization_id { 'nil' }
     end
 
   end

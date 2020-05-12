@@ -23,11 +23,12 @@ RSpec.describe RegionsController, type: :controller do
 
 	context 'Admin user' do
 
-		let(:admin_user) { FactoryBoy.create(:user, :admin) }
+		let(:admin_user) { FactoryBot.create(:user, :admin) }
 		before(:each) { sign_in(:admin_user) }
 
 		describe 'GET #index' do
 			#specify { expect(get(:index)).to be_successful }
+			#specify { expect(get(:index)).to redirect_to(dashboard_path) }
 		end
 
 	end

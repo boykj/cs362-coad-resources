@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :region do
-    name { 'Default' }
+    sequence :name do |n|
+      "Default #{n}"
+    end
   end
 end

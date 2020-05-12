@@ -29,6 +29,7 @@ RSpec.describe ResourceCategory, type: :model do
 
 	describe "methods" do
 		it "has a string that is the name" do
+			resource_category.name = 'Default'
 			expected_name = 'Default'
 			expect(resource_category.to_s).to eq(expected_name)
 		end
@@ -44,11 +45,6 @@ RSpec.describe ResourceCategory, type: :model do
 		it "has an inactive method" do
 			#active_resource_category = ResourceCategory.new(active:true)
 			expect(resource_category.inactive?).to be_falsey
-		end
-
-		it "has a to_s method" do
-			expected_name = 'Default'
-			expect(resource_category.to_s).to eq(expected_name)
 		end
 	end
 
