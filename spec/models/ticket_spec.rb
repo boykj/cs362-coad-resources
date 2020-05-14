@@ -57,18 +57,25 @@ open_tickets = Ticket.where(closed: false)
 	describe "scopes" do
 
 		describe "open" do
-			let(:open_ticket) { create(:ticket, :without_organization) }
-			it "retrieves and open scope with with a nil organization id" do
-				open_tickets = Ticket.open
-				#open_tickets = Ticket.where(closed: false, organization_id: 'nil')				
-				#expect(open_tickets).to include(open_ticket)
+
+			let(:open_ticket) { create(:ticket, :open) }
+			let(:closed_ticket) { create(:ticket, :closed) }
+			open_tickets = Ticket.where(closed: false)
+			
+			it "retrieves and open scope with with a nil organization id" do			
+				expect(open_tickets).to include(open_ticket)
+			end
+
+			it "retrieves a ticket with a closed scope" do
+				expect(open_tickets).not_to include(:closed_ticket)
 			end
 		end
 
 	end
 	
 	describe "methods" do
-		it "has a to_s string method" do
+		it "has a to_s string method for ticket ID" do
+			ticket.id = 1
 			expected_ticket_value = 1
 			expect(ticket.to_s).to eq("Ticket #{expected_ticket_value}")
 		end

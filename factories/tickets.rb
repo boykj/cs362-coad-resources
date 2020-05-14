@@ -1,10 +1,15 @@
 FactoryBot.define do
 
   factory :ticket do
-    name { 'Default' }
-    id { '1' }
+    sequence :id do |n|
+      "#{n}"
+    end
+
+    sequence :name do |n|
+      "Ticket #{n}"
+    end
     phone { '+19 62 123 00 00' }
-    #description { 'Default Description' }
+    description { 'Fake' }
     resource_category_id { create(:resource_category).id }
     region_id { create(:region).id }
 
