@@ -32,5 +32,7 @@ RSpec.describe RegionsController, type: :controller do
 		end
 
 	end
+
+	
 	
 end
