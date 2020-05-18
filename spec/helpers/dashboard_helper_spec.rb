@@ -11,6 +11,8 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe DashboardHelper, type: :helper do
+
+
 	it "returns admin dashboard" do
 		user = double()
 		user.stub(:admin?).and_return(true)
@@ -23,4 +25,14 @@ RSpec.describe DashboardHelper, type: :helper do
 		user.stub_chain(:organization, :submitted?).and_return(true)
 		expect(dashboard_for(user)).to eq('organization_submitted_dashboard')
 	end
+
+	it "example_method invokes objects side_effect" do
+		obj = double(:side_effect)
+		expect(obj).to receive(:side_effect)
+		example_method(obj)
+	end	
+
+
+
+
 end

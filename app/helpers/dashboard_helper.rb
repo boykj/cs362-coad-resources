@@ -12,4 +12,10 @@ module DashboardHelper
     end
   end
 
+  def example_method(obj)
+    obj.side_effect
+  end
+
+
+
 end
