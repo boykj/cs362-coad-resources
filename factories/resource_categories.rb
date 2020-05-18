@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :resource_category do
-    name { 'Default' }
+    sequence :name do |n|
+      "Default #{n}"
+    end
   end
 end

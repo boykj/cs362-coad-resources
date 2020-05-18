@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 	let(:ticket) { FactoryBot.build(:ticket) }
+	let(:region) { FactoryBot.create(:region) } 
+	let(:resource_category) { FactoryBot.create(:resource_category) }
+	let(:organization) { FactoryBot.create(:organization) }
 
 	describe "relationships" do 
 		it "should belong to region" do
@@ -39,26 +42,51 @@ RSpec.describe Ticket, type: :model do
 			expect(ticket).to validate_length_of(:description).is_at_most(1020).on(:create)
 		end
 
-		describe "validates the authenticity of a phone number" do
-			#expect(ticket).to validate(:phone).phony_plausible(true)
+		it "validates the authenticity of a phone number" do
+			ticket.region = region
+			ticket.resource_category = resource_category
+			expect(ticket).to be_valid
+			ticket.phone = 'INVALID'
+			expect(ticket).to_not be_valid
 		end
-		describe "indentifies an incorect phone number" do
-			#it { should_not allow_value('123-123-123').for(:phone) }
-		end
+
 	end
 
+open_tickets = Ticket.where(closed: false)
+
 	describe "scopes" do
-		#TODO
+
+		describe "open" do
+
+			let(:open_ticket) { create(:ticket, :open) }
+			let(:closed_ticket) { create(:ticket, :closed) }
+			open_tickets = Ticket.where(closed: false)
+			
+			it "retrieves and open scope with with a nil organization id" do			
+				expect(open_tickets).to include(open_ticket)
+			end
+
+			it "retrieves a ticket with a closed scope" do
+				expect(open_tickets).not_to include(:closed_ticket)
+			end
+		end
+
 	end
 	
 	describe "methods" do
-		it "has a to_s string method" do
+		it "has a to_s string method for ticket ID" do
+			ticket.id = 1
 			expected_ticket_value = 1
 			expect(ticket.to_s).to eq("Ticket #{expected_ticket_value}")
 		end
 
 		it "has a captured? method" do
-			#TODO
+			expect(ticket.captured?).to be_falsey
+		end
+
+		it "has an opposite captured? method" do
+			ticket.organization = organization
+			expect(ticket.captured?).to be_truthy
 		end
 
 		it "has an open? method" do
