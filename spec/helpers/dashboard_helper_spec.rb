@@ -23,8 +23,17 @@ RSpec.describe DashboardHelper, type: :helper do
 		User.any_instance.stub(:admin?).and_return(false)
 		user = User.new
 		user.stub_chain(:organization, :submitted?).and_return(true)
+		#byebug
 		expect(dashboard_for(user)).to eq('organization_submitted_dashboard')
 	end
+
+	# it "returns organization approved dashboard" do
+	# 	User.any_instance.stub(:admin?).and_return(false)
+	# 	user = User.new
+	# 	#byebug
+	# 	user.stub_chain(:organization, :approved?).and_return(true)
+	# 	expect(dashboard_for(user)).to eq('organization_approved_dashboard')
+	# end
 
 	it "example_method invokes objects side_effect" do
 		obj = double(:side_effect)

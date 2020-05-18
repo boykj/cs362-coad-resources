@@ -16,6 +16,4 @@ module DashboardHelper
     obj.side_effect
   end
 
-
-
 end
