@@ -35,6 +35,8 @@ RSpec.describe RegionsController, type: :controller do
 		end
 
 	end
+
+	
 	
 	# describe 'methods' do
 

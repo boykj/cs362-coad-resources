@@ -60,6 +60,8 @@ open_tickets = Ticket.where(closed: false)
 
 			let(:open_ticket) { create(:ticket, :open) }
 			let(:closed_ticket) { create(:ticket, :closed) }
+			let(:open_with_org) { create(:ticket, :open, :with_organization) }
+			let(:closed_with_org) { create(:ticket, :closed, :with_organization) }
 			open_tickets = Ticket.where(closed: false)
 			
 			it "retrieves and open scope with with a nil organization id" do			
@@ -69,6 +71,33 @@ open_tickets = Ticket.where(closed: false)
 			it "retrieves a ticket with a closed scope" do
 				expect(open_tickets).not_to include(:closed_ticket)
 			end
+
+			it "retrieves an open ticket with all organizations" do
+				skip
+			end
+
+			it "retrieves an open ticket with an organization" do
+				open_tickets_with_organization = Ticket.where(closed: false, organization_id: true)
+				expect(open_tickets_with_organization).to include(open_with_org)
+				expect(open_tickets_with_organization).to_not include(closed_with_org)
+			end
+
+			it "retrieves a closed ticket without an organization" do
+				closed_tickets_without_organization = Ticket.where(closed: true, organization_id: true)
+				expect(closed_tickets_without_organization).to include(closed_with_org)
+				expect(closed_tickets_without_organization).to_not include(open_ticket)
+			end
+
+			it "retrieves a ticket with a region id scope" do
+				region_tickets = Ticket.where(region_id: true)
+				expect(region_tickets).to include(open_ticket)
+			end
+
+			it "retrieves a ticket with a resource_category_id" do
+				resource_category_tickets = Ticket.where(resource_category: true)
+				expect(resource_category_tickets).to include(open_ticket)
+			end
+
 		end
 
 	end

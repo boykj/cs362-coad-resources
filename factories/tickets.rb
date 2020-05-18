@@ -26,7 +26,7 @@ FactoryBot.define do
     end
 
     trait :without_organization do
-      organization_id { 'nil' }
+      organization_id { nil }
     end
 
   end
