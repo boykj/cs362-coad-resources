@@ -31,8 +31,8 @@ RSpec.describe 'Updating an Organization', type: :feature do
 			visit edit_organization_path(organization)
 			#byebug
 			#click_on('Edit Organization')
-			#fill_in(organization.name).with('Default fake name')
-			#click_on 'Save Organization'
+			#fill_in 'Name'.with('Default fake name')
+			#click_on 'Save'
 			#expect(page).to have_content('Default fake name')
 		end
 

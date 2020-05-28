@@ -85,7 +85,7 @@ RSpec.describe Organization, type: :model do
 		end
 
 		it "has a string representation that is a name" do
-			expected_name = 'Default'
+			expected_name = org.name
 			expect(org.to_s).to eq(expected_name)
 		end
 

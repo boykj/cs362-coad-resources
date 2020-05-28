@@ -1,8 +1,15 @@
 FactoryBot.define do
-  factory :organization do
-		name { 'Default' }
+	factory :organization do
+		
+    sequence :name do |n|
+      "Organization #{n}"
+		end
+		
+    sequence :email do |n|
+      "organization_email#{n}@google.com"
+    end				
+
 		status { :submitted }
-		email { 'fake@google.com' }
 		primary_name { 'Default primary' }
 		secondary_name { 'Default secondary' }
 		phone { '+19 62 123 00 01' }
