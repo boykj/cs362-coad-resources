@@ -25,4 +25,5 @@ RSpec.describe 'Releasing a ticket by an', type: :feature do
 			expect(page).to have_content('Capture')
 		end
 	end
+	
 end
