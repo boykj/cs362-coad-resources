@@ -47,8 +47,8 @@ RSpec.describe User, type: :model do
 		end
 
 		it "has a string that is the email" do
-			expected_email = 'fake@google.com'
-			expect(user.to_s).to eq(expected_email)
+			#expected_email = 'fake@google.com'
+			expect(user.to_s).to eq(user.email)
 		end
 	end
 	
