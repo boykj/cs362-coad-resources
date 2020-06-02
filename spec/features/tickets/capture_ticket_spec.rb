@@ -17,9 +17,7 @@ RSpec.describe 'Capturing a ticket', type: :feature do
 		it 'it captures a ticket' do
 			log_in_as(user)
 			visit dashboard_path()
-			#byebug
 			click_link 'Tickets'
-			#expect(ticket.captured).to be_truthy
 			click_on 'default'
 			click_on 'Capture'
 			visit ticket_path(ticket)
