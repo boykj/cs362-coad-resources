@@ -2,10 +2,17 @@ require 'rails_helper'
 
 RSpec.describe 'Closing a ticket', type: :feature do
 
-	before :each do
-		@region = Region.create(name: 'Fake Region')
-		@resource_category = Resource_category.create(name: 'Fake Category')
-		@user = User.create(name: 'Fake name')
+	let(:admin) { create(:user, :admin) }
+	let(:organization) { create(:organization, :approved)}
+	let(:ticket) { create(:ticket) }
+
+	context 'as an admin' do
+		it 'closes a ticket' do
+			log_in_as(admin)
+			visit ticket_path(ticket)
+			click_on 'Close'
+			expect(page).to have_content('Closed')
+		end
 	end
 
 end
