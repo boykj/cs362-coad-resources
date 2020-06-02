@@ -22,6 +22,8 @@ RSpec.describe 'Capturing a ticket', type: :feature do
 			#expect(ticket.captured).to be_truthy
 			click_on 'default'
 			click_on 'Capture'
+			visit ticket_path(ticket)
+			expect(page).to have_content('Release')
 		end
 	end
 end

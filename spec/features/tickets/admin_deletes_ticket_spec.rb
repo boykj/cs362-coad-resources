@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Deleting a Ticket', type: :feature do
 
-	  let(:admin) { create(:user, :admin) }
-	  let(:ticket) { create(:ticket) }
+	let(:admin) { create(:user, :admin) }
+	let(:ticket) { create(:ticket) }
 
 context 'as an admin' do 
 	it 'it deletes a ticket' do
